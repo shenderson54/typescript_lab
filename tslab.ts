@@ -31,12 +31,12 @@ function findNameOfTallestMountain(mountains: Mountain[]) {
 }
 console.log(findNameOfTallestMountain(mountainsWeHaventClimbed))
 
-interface Products {
+interface Product {
     name: string;
     price: number;
 }
 
-let products: Products[] = [
+let products: Product[] = [
     {
         name: "Banana",
         price: 1.05
@@ -74,7 +74,7 @@ let products: Products[] = [
         price: 48
     }]
 
-function calcAverageProductPrice(products: Products[]) {
+function calcAverageProductPrice(products: Product[]) {
     let position = 0, sum = 0, length = products.length;
     while (position < length) {
         sum = sum + products[position++].price;
@@ -84,25 +84,32 @@ function calcAverageProductPrice(products: Products[]) {
 
 console.log(calcAverageProductPrice(products));
 
-interface InventoryItem extends Products {
+interface InventoryItem {
+    product: Product;
     quantity: number;
 
 }
 let inventory: InventoryItem[] = [
     {
-
-        name: "motor",
-        price: 10.00,
+        product: {
+            name: "motor",
+            price: 10.00,
+        },
+        
         quantity: 10,
     },
     {
-        name: "sensor",
-        price: 12.50,
+        product: {
+            name: "sensor",
+            price: 12.50,
+        },
         quantity: 4,
     },
     {
-        name: "LED",
-        price: 1.00,
+        product: {
+            name: "LED",
+            price: 1.00,
+        },
         quantity: 20,
     }]
 
@@ -112,7 +119,7 @@ function calcInventoryValue(inventoryItem: InventoryItem[]) {
 
     for (let inventory of inventoryItem) {
 
-        total += inventory.price * inventory.quantity;
+        total += inventory.product.price * inventory.quantity;
 
 
     } return total;
